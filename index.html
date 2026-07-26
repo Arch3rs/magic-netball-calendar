@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>Magic Netball Training Calendars</title>
+<style>
+:root{--pink:#ff4fa3;--black:#050505;--white:#fff;--grey:#f4f4f4;--muted:#777}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
+header{background:#000;color:#fff;border-bottom:6px solid var(--pink)}
+.topbar{max-width:1100px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{width:210px;max-width:55vw;height:auto;display:block}
+.tagline{text-align:right;font-size:.8rem;line-height:1.35;text-transform:uppercase;letter-spacing:.14em;font-weight:700}
+.hero{background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.68)),url('https://static.wixstatic.com/media/44ff56_a64cc8795c284946b2a144d7d5a964bc~mv2.png');background-size:cover;background-position:center;padding:72px 20px 78px;text-align:center;color:#fff}
+.hero h1{margin:0;font-size:clamp(2.3rem,7vw,5.2rem);letter-spacing:-.04em;text-transform:uppercase}.hero h1 span{color:var(--pink)}
+.hero p{max-width:700px;margin:18px auto 0;font-size:1.05rem;line-height:1.6}.strap{margin-top:18px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem}
+main{max-width:900px;margin:-36px auto 60px;padding:0 16px}.card{background:#fff;box-shadow:0 16px 45px rgba(0,0,0,.15);border-top:6px solid var(--pink);padding:24px}
+label{display:block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}select{width:100%;padding:16px;border:2px solid #111;font-size:1rem;font-weight:700;background:#fff}
+.help{color:var(--muted);font-size:.92rem;margin:10px 0 0}.panel{display:none;margin-top:20px;background:#000;color:#fff;padding:24px;border-left:6px solid var(--pink)}.panel.active{display:block}.panel h2{margin:0 0 8px;font-size:2.2rem;text-transform:uppercase}.panel>p{margin:0 0 20px;color:#ddd}
+.links{display:grid;gap:10px}.links a{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;color:#000;text-decoration:none;padding:15px 16px;font-weight:800;border:2px solid #fff;transition:.15s}.links a:hover{background:var(--pink);border-color:var(--pink);color:#000;transform:translateY(-1px)}.links small{display:block;color:#666;font-weight:400;margin-top:3px}.links a:hover small{color:#222}.arrow{font-size:1.8rem;color:var(--pink)}.links a:hover .arrow{color:#000}
+.notice{margin-top:18px;background:#fff3f8;border-left:6px solid var(--pink);padding:16px;font-size:.95rem}.notice strong{text-transform:uppercase}
+footer{background:#000;color:#fff;text-align:center;padding:28px 20px;border-top:6px solid var(--pink)}footer a{color:var(--pink);text-decoration:none;font-weight:700}
+@media(max-width:620px){.topbar{align-items:flex-start}.tagline{font-size:.63rem}.hero{padding:54px 18px 62px}.card,.panel{padding:18px}}
+</style>
+</head>
+<body>
+<header><div class="topbar">
+<img class="logo" src="https://static.wixstatic.com/media/44ff56_a64cc8795c284946b2a144d7d5a964bc~mv2.png/v1/fill/w_528,h_192,al_c,q_90/44ff56_a64cc8795c284946b2a144d7d5a964bc~mv2.png" alt="Magic Netball">
+<div class="tagline">Improving individuals.<br>Creating team performance.</div>
+</div></header>
+<section class="hero"><h1>Training <span>Calendars</span></h1><p>Select your age group, then choose the calendar that matches your player's training programme.</p><div class="strap">Performance on court. Memories off court.</div></section>
+<main>
+<section class="card">
+<label for="age">Choose age group</label>
+<select id="age"><option value="">Select age group...</option><option>U9</option><option>U10</option><option>U11</option><option>U12</option><option>U13</option><option>U14</option><option>U15</option><option>U19 & Open</option></select>
+<p class="help">Only calendars for the selected age group will appear.</p>
+<div id="panels"></div>
+<div class="notice"><strong>Important:</strong> choose one calendar per player. Positional calendars already include standard training.</div>
+</section>
+</main>
+<footer>© Magic Netball · <a href="https://www.magicnetball.co.uk/">Visit the main website</a><br><br><span style="font-size:.8rem;color:#aaa">Make your own magic.</span></footer>
+<script>
+const data={
+'U9':[['Standard Training','Magic_Netball_U9_Standard_Training.ics']],
+'U10':[['Standard Training','Magic_Netball_U10_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U10_Training_plus_Shooters.ics']],
+'U11':[['Standard Training','Magic_Netball_U11_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U11_Training_plus_Shooters.ics']],
+'U12':[['Standard Training','Magic_Netball_U12_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U12_Training_plus_Shooters.ics'],['Standard + Middies','Magic_Netball_U12_Training_plus_Middies.ics'],['Standard + Circle Defenders','Magic_Netball_U12_Training_plus_Circle_Defenders.ics']],
+'U13':[['Standard Training','Magic_Netball_U13_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U13_Training_plus_Shooters.ics'],['Standard + Middies','Magic_Netball_U13_Training_plus_Middies.ics'],['Standard + Circle Defenders','Magic_Netball_U13_Training_plus_Circle_Defenders.ics']],
+'U14':[['Standard Training','Magic_Netball_U14_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U14_Training_plus_Shooters.ics'],['Standard + Middies','Magic_Netball_U14_Training_plus_Middies.ics'],['Standard + Circle Defenders','Magic_Netball_U14_Training_plus_Circle_Defenders.ics']],
+'U15':[['Standard Training','Magic_Netball_U15_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U15_Training_plus_Shooters.ics'],['Standard + Middies','Magic_Netball_U15_Training_plus_Middies.ics'],['Standard + Circle Defenders','Magic_Netball_U15_Training_plus_Circle_Defenders.ics']],
+'U19 & Open':[['Standard Training','Magic_Netball_U19_and_Open_Standard_Training.ics'],['Standard + Shooters','Magic_Netball_U19_and_Open_Training_plus_Shooters.ics'],['Standard + Middies','Magic_Netball_U19_and_Open_Training_plus_Middies.ics'],['Standard + Circle Defenders','Magic_Netball_U19_and_Open_Training_plus_Circle_Defenders.ics']]};
+const root=document.getElementById('panels');
+Object.entries(data).forEach(([age,items])=>{const s=document.createElement('section');s.className='panel';s.dataset.age=age;s.innerHTML=`<h2>${age}</h2><p>Choose the calendar you need.</p><div class="links">${items.map(([name,file])=>`<a href="webcal://arch3rs.github.io/magic-netball-calendar/${file}"><span>${name}<small>Tap to subscribe</small></span><span class="arrow">›</span></a>`).join('')}</div>`;root.appendChild(s)});
+document.getElementById('age').addEventListener('change',e=>document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.age===e.target.value)));
+</script>
+</body></html>
