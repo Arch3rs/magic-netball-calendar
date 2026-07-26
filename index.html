@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5b1f84">
+<title>Magic Netball Calendars</title>
+<style>
+:root {
+  --magic-purple:#5b1f84;
+  --magic-purple-dark:#35104f;
+  --magic-pink:#ee3f98;
+  --magic-lilac:#f3e8fb;
+  --magic-gold:#ffd166;
+  --ink:#24192e;
+  --muted:#756b7b;
+  --white:#ffffff;
+  --line:#eadcf2;
+  --shadow:0 18px 50px rgba(63,25,89,.15);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  min-height:100vh;
+  font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 5%, rgba(238,63,152,.12), transparent 26rem),
+    radial-gradient(circle at 90% 18%, rgba(91,31,132,.10), transparent 24rem),
+    #faf7fc;
+}
+.hero {
+  position:relative;
+  overflow:hidden;
+  color:white;
+  background:
+    linear-gradient(135deg, rgba(53,16,79,.98), rgba(91,31,132,.96) 52%, rgba(238,63,152,.94));
+  padding:34px 18px 78px;
+}
+.hero::before,
+.hero::after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.14);
+}
+.hero::before { width:240px; height:240px; right:-90px; top:-100px; }
+.hero::after { width:180px; height:180px; left:-70px; bottom:-90px; }
+.hero-inner {
+  position:relative;
+  z-index:1;
+  width:min(900px,100%);
+  margin:auto;
+  text-align:center;
+}
+.brand-lockup {
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:.78rem;
+}
+.brand-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--magic-gold);
+  box-shadow:0 0 0 5px rgba(255,209,102,.18);
+}
+h1 {
+  margin:18px 0 8px;
+  font-size:clamp(2.25rem,8vw,4.4rem);
+  letter-spacing:-.055em;
+  line-height:.98;
+}
+.hero p {
+  margin:0 auto;
+  max-width:620px;
+  color:rgba(255,255,255,.9);
+  font-size:1.04rem;
+}
+main {
+  width:min(900px,calc(100% - 20px));
+  margin:-42px auto 42px;
+  position:relative;
+  z-index:2;
+}
+.selector-card {
+  background:rgba(255,255,255,.97);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:24px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+.selector-label {
+  display:block;
+  margin-bottom:8px;
+  color:var(--magic-purple-dark);
+  font-weight:900;
+  font-size:.95rem;
+}
+.select-wrap { position:relative; }
+.select-wrap::after {
+  content:"⌄";
+  position:absolute;
+  right:18px;
+  top:50%;
+  transform:translateY(-56%);
+  color:var(--magic-purple);
+  font-size:1.4rem;
+  pointer-events:none;
+}
+select {
+  width:100%;
+  min-height:58px;
+  appearance:none;
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:0 52px 0 16px;
+  font-size:1.06rem;
+  font-weight:800;
+  color:var(--ink);
+  background:white;
+  outline:none;
+}
+select:focus {
+  border-color:var(--magic-pink);
+  box-shadow:0 0 0 5px rgba(238,63,152,.12);
+}
+.helper {
+  margin:10px 2px 0;
+  color:var(--muted);
+  font-size:.9rem;
+}
+.calendar-panel {
+  display:none;
+  margin-top:18px;
+  padding:22px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:0 12px 36px rgba(63,25,89,.10);
+}
+.calendar-panel.active {
+  display:block;
+  animation:rise .2s ease-out;
+}
+@keyframes rise {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.panel-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+.eyebrow {
+  margin:0 0 2px;
+  color:var(--magic-pink);
+  font-size:.76rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+}
+h2 {
+  margin:0;
+  color:var(--magic-purple-dark);
+  font-size:2rem;
+  letter-spacing:-.04em;
+}
+.ball-mark {
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  font-size:30px;
+  background:linear-gradient(135deg,var(--magic-lilac),#fff);
+  border:1px solid var(--line);
+}
+.panel-intro {
+  margin:10px 0 17px;
+  color:var(--muted);
+}
+.calendar-list {
+  display:grid;
+  gap:11px;
+}
+.calendar-link {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:70px;
+  padding:11px 13px;
+  color:var(--ink);
+  text-decoration:none;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:linear-gradient(180deg,#fff,#fdf9ff);
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.calendar-link:hover,
+.calendar-link:focus {
+  transform:translateY(-2px);
+  border-color:#d4b5e7;
+  box-shadow:0 10px 22px rgba(91,31,132,.12);
+  outline:none;
+}
+.calendar-icon {
+  width:46px;
+  height:46px;
+  flex:0 0 46px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:var(--magic-lilac);
+  font-size:1.35rem;
+}
+.calendar-copy {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.calendar-copy strong { font-size:1rem; }
+.calendar-copy small { color:var(--muted); margin-top:2px; }
+.chevron {
+  margin-left:auto;
+  color:var(--magic-pink);
+  font-size:2rem;
+  line-height:1;
+}
+.notice {
+  margin-top:18px;
+  padding:16px 17px;
+  border-radius:18px;
+  color:#4f3a09;
+  background:#fff8df;
+  border:1px solid #f2df9f;
+}
+.notice strong { color:#3d2c05; }
+.footer {
+  width:min(900px,calc(100% - 24px));
+  margin:0 auto 28px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.88rem;
+}
+@media (max-width:600px) {
+  .hero { padding-top:26px; }
+  .selector-card,
+  .calendar-panel { border-radius:20px; padding:16px; }
+  .calendar-link { min-height:66px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-lockup"><span class="brand-dot"></span> Magic Netball</div>
+    <h1>Training Calendars</h1>
+    <p>Select an age group, then tap the calendar you need. Updates will sync automatically after subscription.</p>
+  </div>
+</header>
+
+<main>
+  <section class="selector-card">
+    <label class="selector-label" for="ageGroup">Choose an age group</label>
+    <div class="select-wrap">
+      <select id="ageGroup">
+        <option value="">Select age group…</option>
+        <option value="U9">U9</option>
+        <option value="U10">U10</option>
+        <option value="U11">U11</option>
+        <option value="U12">U12</option>
+        <option value="U13">U13</option>
+        <option value="U14">U14</option>
+        <option value="U15">U15</option>
+        <option value="U19 & Open">U19 & Open</option>
+      </select>
+    </div>
+    <p class="helper">Only the calendars for the selected age group will be shown.</p>
+  </section>
+
+  
+    <section class="calendar-panel" data-age="U9">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U9</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U9_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U10">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U10</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U10_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U10_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U11">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U11</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U11_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U11_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U12">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U12</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U12_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U12_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U12_Training_plus_Middies.ics">
+          <span class="calendar-icon">⚡</span>
+          <span class="calendar-copy">
+            <strong>Standard + Middies</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U12_Training_plus_Circle_Defenders.ics">
+          <span class="calendar-icon">🛡️</span>
+          <span class="calendar-copy">
+            <strong>Standard + Circle Defenders</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U13">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U13</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U13_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U13_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U13_Training_plus_Middies.ics">
+          <span class="calendar-icon">⚡</span>
+          <span class="calendar-copy">
+            <strong>Standard + Middies</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U13_Training_plus_Circle_Defenders.ics">
+          <span class="calendar-icon">🛡️</span>
+          <span class="calendar-copy">
+            <strong>Standard + Circle Defenders</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U14">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U14</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U14_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U14_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U14_Training_plus_Middies.ics">
+          <span class="calendar-icon">⚡</span>
+          <span class="calendar-copy">
+            <strong>Standard + Middies</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U14_Training_plus_Circle_Defenders.ics">
+          <span class="calendar-icon">🛡️</span>
+          <span class="calendar-copy">
+            <strong>Standard + Circle Defenders</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U15">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U15</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U15_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U15_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U15_Training_plus_Middies.ics">
+          <span class="calendar-icon">⚡</span>
+          <span class="calendar-copy">
+            <strong>Standard + Middies</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U15_Training_plus_Circle_Defenders.ics">
+          <span class="calendar-icon">🛡️</span>
+          <span class="calendar-copy">
+            <strong>Standard + Circle Defenders</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="calendar-panel" data-age="U19 & Open">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">Magic Netball</p>
+          <h2>U19 & Open</h2>
+        </div>
+        <div class="ball-mark" aria-hidden="true">🏐</div>
+      </div>
+      <p class="panel-intro">Choose the calendar that matches the player's training programme.</p>
+      <div class="calendar-list">
+        
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U19_and_Open_Standard_Training.ics">
+          <span class="calendar-icon">📅</span>
+          <span class="calendar-copy">
+            <strong>Standard Training</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U19_and_Open_Training_plus_Shooters.ics">
+          <span class="calendar-icon">🎯</span>
+          <span class="calendar-copy">
+            <strong>Standard + Shooters</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U19_and_Open_Training_plus_Middies.ics">
+          <span class="calendar-icon">⚡</span>
+          <span class="calendar-copy">
+            <strong>Standard + Middies</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+
+        <a class="calendar-link" href="webcal://arch3rs.github.io/magic-netball-calendar/Magic_Netball_U19_and_Open_Training_plus_Circle_Defenders.ics">
+          <span class="calendar-icon">🛡️</span>
+          <span class="calendar-copy">
+            <strong>Standard + Circle Defenders</strong>
+            <small>Tap to subscribe</small>
+          </span>
+          <span class="chevron">›</span>
+        </a>
+        
+      </div>
+    </section>
+    
+
+  <div class="notice">
+    <strong>Important:</strong> choose only one calendar per player. Positional calendars already include standard training.
+  </div>
+</main>
+
+<div class="footer">Magic Netball · Calendar subscriptions</div>
+
+<script>
+const select = document.getElementById('ageGroup');
+const panels = [...document.querySelectorAll('.calendar-panel')];
+
+select.addEventListener('change', () => {
+  panels.forEach(panel => {
+    panel.classList.toggle('active', panel.dataset.age === select.value);
+  });
+});
+</script>
+</body>
+</html>
