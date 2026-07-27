@@ -30,7 +30,7 @@ UID:2150c29a-40fd-4d04-837d-fcde3a72ee16@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20260902T174500
 DTEND;TZID=Europe/London:20260902T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -39,7 +39,7 @@ UID:aa463c0b-ce76-49dc-b480-e871882f52b1@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20260909T174500
 DTEND;TZID=Europe/London:20260909T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -48,7 +48,7 @@ UID:93911bc7-7174-40b2-b02e-3f79d83c09d5@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20260916T174500
 DTEND;TZID=Europe/London:20260916T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -57,7 +57,7 @@ UID:9528b3d7-418c-432d-b0a0-76365da9cd4d@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20260930T174500
 DTEND;TZID=Europe/London:20260930T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -66,7 +66,7 @@ UID:45db6cdb-ba52-4035-bc4a-d1ab862804ef@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261007T174500
 DTEND;TZID=Europe/London:20261007T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -75,7 +75,7 @@ UID:4550ff33-31e4-4812-adbd-8759f4dd9714@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261014T174500
 DTEND;TZID=Europe/London:20261014T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -84,7 +84,7 @@ UID:9a6718e6-7683-49e9-ae62-e11f05a2c943@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261021T174500
 DTEND;TZID=Europe/London:20261021T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -93,7 +93,7 @@ UID:aa382b53-d858-4624-8f99-091591cff5d1@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261104T174500
 DTEND;TZID=Europe/London:20261104T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -102,7 +102,7 @@ UID:d9ac14be-cecd-4e45-815f-53194646932a@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261111T174500
 DTEND;TZID=Europe/London:20261111T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -111,7 +111,7 @@ UID:94bb6990-e25b-405f-b66d-5a6f3a636567@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261118T174500
 DTEND;TZID=Europe/London:20261118T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -120,7 +120,7 @@ UID:aa0794f5-f5f4-41cc-8f6b-b754eae6dece@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261125T174500
 DTEND;TZID=Europe/London:20261125T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -129,7 +129,7 @@ UID:152dc7ee-0f2b-4313-b695-2c2feb543fde@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261202T174500
 DTEND;TZID=Europe/London:20261202T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -138,7 +138,7 @@ UID:8e9bcb07-480b-4bd4-9c0b-569c2989a174@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20261209T174500
 DTEND;TZID=Europe/London:20261209T190000
-SUMMARY:Magic Netball U10 Training
+SUMMARY:Magic Netball U10 - Standard Training
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:
 END:VEVENT
@@ -147,7 +147,7 @@ UID:e3c0f424-3725-489a-9d3c-b3b59d3d3b14@chatgpt.local
 DTSTAMP:20260725T211951Z
 DTSTART;TZID=Europe/London:20260921T173000
 DTEND;TZID=Europe/London:20260921T190000
-SUMMARY:Magic Netball U10 Training - One-off Monday Session
+SUMMARY:Magic Netball U10 - Standard Training (One-off Monday Session)
 LOCATION:K2 Crawley\, Pease Pottage Hill\, Crawley RH11 9BQ
 DESCRIPTION:Replacement for Wednesday 23 September.
 END:VEVENT
